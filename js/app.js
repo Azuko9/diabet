@@ -27,6 +27,12 @@ const tabBgClasses = {
 function switchTab(tabId) {
   activeTab = tabId;
 
+  // Changing meal resets the "Mes Choix" bar
+  document.querySelectorAll('.food-card.selected').forEach(card => {
+    card.classList.remove('selected');
+  });
+  selections = {};
+
   // Update button styling
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.className = 'tab-btn px-4 py-2.5 rounded-lg text-base sm:text-lg font-bold transition-all bg-slate-100 text-slate-800 hover:bg-slate-200 flex items-center gap-2';
