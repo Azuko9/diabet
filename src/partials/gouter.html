@@ -1,110 +1,110 @@
-    <section id="page-p3" class="poster-page bg-white rounded-xl p-3 shadow-xs border border-pink-200 flex flex-col justify-between gap-2 hidden">
+    <section id="page-p3" class="poster-page meal-section border-pink-300 hidden">
       <!-- Section Header -->
-      <div class="shrink-0 flex items-center justify-between gap-2 pb-2 border-b border-pink-200 flex-wrap">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-pink-100 border border-pink-300 flex items-center justify-center text-xl shadow-xs">
+      <div class="meal-header border-pink-200">
+        <div class="flex items-center gap-3">
+          <div class="meal-icon-badge meal-icon-badge-pink">
             🍎
           </div>
           <div>
-            <div class="flex items-center gap-2">
-              <span class="bg-pink-500 text-white font-bold text-xs uppercase px-2.5 py-0.5 rounded-full">PAGE 3</span>
-              <h2 class="text-lg font-bold text-slate-800">Mon Goûter / Collation Réconfortant</h2>
+            <div class="flex items-center gap-3">
+              <span class="meal-page-pill meal-page-pill-pink">PAGE 3</span>
+              <h2 class="meal-heading">Mon Goûter / Collation Réconfortant</h2>
             </div>
-            <p class="text-xs font-bold text-slate-600">Ne mangez jamais un fruit seul ! Associez-le avec des noix ou un laitage.</p>
+            <p class="meal-subtitle">Ne mangez jamais un fruit seul ! Associez-le avec des noix ou un laitage.</p>
           </div>
         </div>
 
-        <div class="bg-pink-50 border border-pink-200 rounded-lg px-3 py-1 text-xs text-pink-950 flex items-center gap-1.5">
-          <span class="text-base">⭐</span>
+        <div class="meal-tip meal-tip-pink">
+          <span class="meal-tip-icon">⭐</span>
           <span><strong>Règle Anti-Coup de Barre :</strong> Les bonnes graisses et protéines lissent la glycémie !</span>
         </div>
       </div>
 
       <!-- TABLE GRID COMPACT -->
       <div class="overflow-x-auto">
-        <table class="w-full border-separate border-spacing-1.5">
+        <table class="meal-table">
           <thead>
-            <tr class="h-8">
-              <th class="w-1/5 bg-slate-100 text-slate-800 px-2 py-1.5 rounded-md text-left font-bold text-sm border border-slate-200">Composants</th>
-              <th class="w-1/5 bg-amber-100/90 border border-amber-300 px-2 py-1.5 rounded-md text-slate-900 font-bold text-center text-sm">🥜 GOÛTER 1 : Croquant</th>
-              <th class="w-1/5 bg-pink-100/90 border border-pink-300 px-2 py-1.5 rounded-md text-slate-900 font-bold text-center text-sm">🫐 GOÛTER 2 : Gourmand</th>
-              <th class="w-1/5 bg-emerald-100/90 border border-emerald-300 px-2 py-1.5 rounded-md text-slate-900 font-bold text-center text-sm">🧀 GOÛTER 3 : Salé</th>
-              <th class="w-1/5 bg-indigo-100/90 border border-indigo-300 px-2 py-1.5 rounded-md text-slate-900 font-bold text-center text-sm">🍫 GOÛTER 4 : Chocolat</th>
+            <tr class="meal-table-head-row">
+              <th class="meal-table-label-th">Composants</th>
+              <th class="meal-table-col-th meal-table-col-th-amber">🥜 GOÛTER 1 : Croquant</th>
+              <th class="meal-table-col-th meal-table-col-th-pink">🫐 GOÛTER 2 : Gourmand</th>
+              <th class="meal-table-col-th meal-table-col-th-emerald">🧀 GOÛTER 3 : Salé</th>
+              <th class="meal-table-col-th meal-table-col-th-indigo">🍫 GOÛTER 4 : Chocolat</th>
             </tr>
           </thead>
           <tbody>
             <!-- Ligne 1 : Boisson -->
             <tr data-row="p3-1" data-label="Boisson">
-              <td class="bg-slate-50 px-2 py-2 rounded-md border border-slate-200 font-bold text-sm text-slate-800">🫖 1. Boisson</td>
-              <td class="food-card bg-amber-50/60 hover:bg-amber-100 border border-amber-200 rounded-md p-2 text-center" data-name="Thé vert ou Tisane" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍵</div>
-                <div class="font-bold text-sm text-slate-900">Thé vert ou Tisane</div>
-                <div class="text-xs text-slate-600 font-medium">Sans sucre ajouté</div>
+              <td class="meal-row-label">🫖 1. Boisson</td>
+              <td class="food-card food-card-amber" data-name="Thé vert ou Tisane" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍵</div>
+                <div class="card-title">Thé vert ou Tisane</div>
+                <div class="card-note">Sans sucre ajouté</div>
               </td>
-              <td class="food-card bg-pink-50/60 hover:bg-pink-100 border border-pink-200 rounded-md p-2 text-center" data-name="Eau au citron pressé" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍋</div>
-                <div class="font-bold text-sm text-slate-900">Eau citronnée</div>
-                <div class="text-xs text-slate-600 font-medium">250ml rafraîchissant</div>
+              <td class="food-card food-card-pink" data-name="Eau au citron pressé" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍋</div>
+                <div class="card-title">Eau citronnée</div>
+                <div class="card-note">250ml rafraîchissant</div>
               </td>
-              <td class="food-card bg-emerald-50/60 hover:bg-emerald-100 border border-emerald-200 rounded-md p-2 text-center" data-name="Café décaféiné" onclick="selectFoodCard(this)">
-                <div class="text-2xl">☕</div>
-                <div class="font-bold text-sm text-slate-900">Décaféiné</div>
-                <div class="text-xs text-slate-600 font-medium">Sans sucre</div>
+              <td class="food-card food-card-emerald" data-name="Café décaféiné" onclick="selectFoodCard(this)">
+                <div class="card-icon">☕</div>
+                <div class="card-title">Décaféiné</div>
+                <div class="card-note">Sans sucre</div>
               </td>
-              <td class="food-card bg-indigo-50/60 hover:bg-indigo-100 border border-indigo-200 rounded-md p-2 text-center" data-name="Infusion verveine" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🌿</div>
-                <div class="font-bold text-sm text-slate-900">Infusion Verveine</div>
-                <div class="text-xs text-slate-600 font-medium">Apaisante sans sucre</div>
+              <td class="food-card food-card-indigo" data-name="Infusion verveine" onclick="selectFoodCard(this)">
+                <div class="card-icon">🌿</div>
+                <div class="card-title">Infusion Verveine</div>
+                <div class="card-note">Apaisante sans sucre</div>
               </td>
             </tr>
 
             <!-- Ligne 2 : Fruit ou Céréale -->
             <tr data-row="p3-2" data-label="Fruit/Céréale">
-              <td class="bg-slate-50 px-2 py-2 rounded-md border border-slate-200 font-bold text-sm text-slate-800">🍎 2. Fruit/Base</td>
-              <td class="food-card bg-amber-50/60 hover:bg-amber-100 border border-amber-200 rounded-md p-2 text-center" data-name="1 Pomme ou 1 Poire" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍎</div>
-                <div class="font-bold text-sm text-slate-900">1 Pomme ou Poire</div>
-                <div class="text-xs text-slate-600 font-medium">Fraîche & croquante</div>
+              <td class="meal-row-label">🍎 2. Fruit/Base</td>
+              <td class="food-card food-card-amber" data-name="1 Pomme ou 1 Poire" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍎</div>
+                <div class="card-title">1 Pomme ou Poire</div>
+                <div class="card-note">Fraîche & croquante</div>
               </td>
-              <td class="food-card bg-pink-50/60 hover:bg-pink-100 border border-pink-200 rounded-md p-2 text-center" data-name="Fruits rouges (1 poignée)" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍓</div>
-                <div class="font-bold text-sm text-slate-900">Fruits rouges</div>
-                <div class="text-xs text-slate-600 font-medium">1 poignée (100g)</div>
+              <td class="food-card food-card-pink" data-name="Fruits rouges (1 poignée)" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍓</div>
+                <div class="card-title">Fruits rouges</div>
+                <div class="card-note">1 poignée (100g)</div>
               </td>
-              <td class="food-card bg-emerald-50/60 hover:bg-emerald-100 border border-emerald-200 rounded-md p-2 text-center" data-name="1 Tranche pain complet (30g)" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍞</div>
-                <div class="font-bold text-sm text-slate-900">Pain complet</div>
-                <div class="text-xs text-slate-600 font-medium">1 tranche (30g)</div>
+              <td class="food-card food-card-emerald" data-name="1 Tranche pain complet (30g)" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍞</div>
+                <div class="card-title">Pain complet</div>
+                <div class="card-note">1 tranche (30g)</div>
               </td>
-              <td class="food-card bg-indigo-50/60 hover:bg-indigo-100 border border-indigo-200 rounded-md p-2 text-center" data-name="1/2 Banane" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍌</div>
-                <div class="font-bold text-sm text-slate-900">1/2 Banane</div>
-                <div class="text-xs text-slate-600 font-medium">Pas trop mûre</div>
+              <td class="food-card food-card-indigo" data-name="1/2 Banane" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍌</div>
+                <div class="card-title">1/2 Banane</div>
+                <div class="card-note">Pas trop mûre</div>
               </td>
             </tr>
 
             <!-- Ligne 3 : Frein à la glycémie -->
             <tr data-row="p3-3" data-label="Frein Glycémique">
-              <td class="bg-slate-50 px-2 py-2 rounded-md border border-slate-200 font-bold text-sm text-slate-800">🛡️ 3. Modérateur</td>
-              <td class="food-card bg-amber-50/60 hover:bg-amber-100 border border-amber-200 rounded-md p-2 text-center" data-name="Amandes / Noix non salées (15g)" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🥜</div>
-                <div class="font-bold text-sm text-slate-900">Amandes ou Noix</div>
-                <span class="inline-block bg-amber-200 text-amber-950 text-xs px-2 py-0.5 rounded font-bold mt-0.5">15-20g (1 poignée)</span>
+              <td class="meal-row-label">🛡️ 3. Modérateur</td>
+              <td class="food-card food-card-amber" data-name="Amandes / Noix non salées (15g)" onclick="selectFoodCard(this)">
+                <div class="card-icon">🥜</div>
+                <div class="card-title">Amandes ou Noix</div>
+                <span class="card-badge card-badge-amber">15-20g (1 poignée)</span>
               </td>
-              <td class="food-card bg-pink-50/60 hover:bg-pink-100 border border-pink-200 rounded-md p-2 text-center" data-name="Yaourt grec nature (1 pot)" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🥣</div>
-                <div class="font-bold text-sm text-slate-900">Yaourt grec nature</div>
-                <span class="inline-block bg-pink-200 text-pink-950 text-xs px-2 py-0.5 rounded font-bold mt-0.5">1 pot (125g)</span>
+              <td class="food-card food-card-pink" data-name="Yaourt grec nature (1 pot)" onclick="selectFoodCard(this)">
+                <div class="card-icon">🥣</div>
+                <div class="card-title">Yaourt grec nature</div>
+                <span class="card-badge card-badge-pink">1 pot (125g)</span>
               </td>
-              <td class="food-card bg-emerald-50/60 hover:bg-emerald-100 border border-emerald-200 rounded-md p-2 text-center" data-name="Comté / Cantal (30g)" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🧀</div>
-                <div class="font-bold text-sm text-slate-900">Portion de Comté</div>
-                <span class="inline-block bg-emerald-200 text-emerald-950 text-xs px-2 py-0.5 rounded font-bold mt-0.5">30g de fromage</span>
+              <td class="food-card food-card-emerald" data-name="Comté / Cantal (30g)" onclick="selectFoodCard(this)">
+                <div class="card-icon">🧀</div>
+                <div class="card-title">Portion de Comté</div>
+                <span class="card-badge card-badge-emerald">30g de fromage</span>
               </td>
-              <td class="food-card bg-indigo-50/60 hover:bg-indigo-100 border border-indigo-200 rounded-md p-2 text-center" data-name="2 Carrés choc. noir 70% + noisettes" onclick="selectFoodCard(this)">
-                <div class="text-2xl">🍫</div>
-                <div class="font-bold text-sm text-slate-900">Chocolat noir 70%+</div>
-                <span class="inline-block bg-indigo-200 text-indigo-950 text-xs px-2 py-0.5 rounded font-bold mt-0.5">2 carrés + 4 noisettes</span>
+              <td class="food-card food-card-indigo" data-name="2 Carrés choc. noir 70% + noisettes" onclick="selectFoodCard(this)">
+                <div class="card-icon">🍫</div>
+                <div class="card-title">Chocolat noir 70%+</div>
+                <span class="card-badge card-badge-indigo">2 carrés + 4 noisettes</span>
               </td>
             </tr>
           </tbody>

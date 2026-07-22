@@ -25,6 +25,105 @@ h1, h2, h3, h4, .font-title {
   box-shadow: 0 0 0 3px #10b981, 0 4px 12px -1px rgba(16, 185, 129, 0.3) !important;
 }
 
+/* ==========================================================================
+   Meal page components — shared by petit-déjeuner / déjeuner / goûter / dîner
+   so every page uses the same sizing and the same set of classes instead of
+   repeating the same long Tailwind utility strings in every partial.
+   ========================================================================== */
+
+.meal-section {
+  @apply bg-white rounded-2xl p-4 sm:p-6 shadow-md border-2 flex flex-col justify-between gap-4;
+}
+.meal-header {
+  @apply shrink-0 flex items-center justify-between gap-3 pb-3 border-b-2 flex-wrap;
+}
+.meal-icon-badge {
+  @apply w-12 h-12 rounded-xl border-2 flex items-center justify-center text-3xl shadow-sm;
+}
+.meal-page-pill {
+  @apply text-white font-black text-sm uppercase px-3 py-1 rounded-full;
+}
+.meal-heading {
+  @apply text-xl sm:text-3xl font-black text-slate-900;
+}
+.meal-subtitle {
+  @apply text-sm sm:text-base font-bold text-slate-700 mt-0.5;
+}
+.meal-tip {
+  @apply border-2 rounded-xl px-4 py-2 text-sm sm:text-base flex items-center gap-2 font-semibold;
+}
+.meal-tip-icon {
+  @apply text-2xl;
+}
+
+.meal-table {
+  @apply w-full border-separate border-spacing-2;
+}
+.meal-table-head-row {
+  @apply h-12;
+}
+.meal-table-label-th {
+  @apply w-1/5 bg-slate-200 text-slate-900 px-3 py-2 rounded-lg text-left font-black text-base sm:text-lg border border-slate-300;
+}
+.meal-table-col-th {
+  @apply w-1/5 border-2 px-3 py-2 rounded-lg font-black text-center text-base sm:text-lg;
+}
+.meal-row-label {
+  @apply bg-slate-100 px-3 py-3 rounded-lg border border-slate-300 font-black text-base text-slate-900;
+}
+
+.card-icon {
+  @apply text-3xl sm:text-4xl mb-1;
+}
+.card-title {
+  @apply font-extrabold text-base sm:text-lg text-slate-900;
+}
+.card-note {
+  @apply text-xs sm:text-sm text-slate-700 font-bold;
+}
+.card-badge {
+  @apply inline-block text-xs sm:text-sm px-2.5 py-1 rounded-md font-black mt-1;
+}
+
+/* Color variants: amber, emerald, pink, sky, purple, indigo */
+.meal-icon-badge-amber   { @apply bg-amber-100 border-amber-400; }
+.meal-icon-badge-emerald { @apply bg-emerald-100 border-emerald-400; }
+.meal-icon-badge-pink    { @apply bg-pink-100 border-pink-400; }
+.meal-icon-badge-sky     { @apply bg-sky-100 border-sky-400; }
+.meal-icon-badge-purple  { @apply bg-purple-100 border-purple-400; }
+.meal-icon-badge-indigo  { @apply bg-indigo-100 border-indigo-400; }
+
+.meal-page-pill-amber   { @apply bg-amber-600; }
+.meal-page-pill-emerald { @apply bg-emerald-600; }
+.meal-page-pill-pink    { @apply bg-pink-600; }
+.meal-page-pill-indigo  { @apply bg-indigo-600; }
+
+.meal-tip-amber   { @apply bg-amber-50 border-amber-300 text-amber-950; }
+.meal-tip-emerald { @apply bg-emerald-50 border-emerald-300 text-emerald-950; }
+.meal-tip-pink    { @apply bg-pink-50 border-pink-300 text-pink-950; }
+.meal-tip-indigo  { @apply bg-indigo-50 border-indigo-300 text-indigo-950; }
+
+.meal-table-col-th-amber   { @apply bg-amber-200/90 border-amber-400 text-amber-950; }
+.meal-table-col-th-emerald { @apply bg-emerald-200/90 border-emerald-400 text-emerald-950; }
+.meal-table-col-th-pink    { @apply bg-pink-200/90 border-pink-400 text-pink-950; }
+.meal-table-col-th-sky     { @apply bg-sky-200/90 border-sky-400 text-sky-950; }
+.meal-table-col-th-purple  { @apply bg-purple-200/90 border-purple-400 text-purple-950; }
+.meal-table-col-th-indigo  { @apply bg-indigo-200/90 border-indigo-400 text-indigo-950; }
+
+.food-card-amber   { @apply bg-amber-50/80 hover:bg-amber-100 border-2 border-amber-300 rounded-lg p-3 text-center; }
+.food-card-emerald { @apply bg-emerald-50/80 hover:bg-emerald-100 border-2 border-emerald-300 rounded-lg p-3 text-center; }
+.food-card-pink    { @apply bg-pink-50/80 hover:bg-pink-100 border-2 border-pink-300 rounded-lg p-3 text-center; }
+.food-card-sky     { @apply bg-sky-50/80 hover:bg-sky-100 border-2 border-sky-300 rounded-lg p-3 text-center; }
+.food-card-purple  { @apply bg-purple-50/80 hover:bg-purple-100 border-2 border-purple-300 rounded-lg p-3 text-center; }
+.food-card-indigo  { @apply bg-indigo-50/80 hover:bg-indigo-100 border-2 border-indigo-300 rounded-lg p-3 text-center; }
+
+.card-badge-amber   { @apply bg-amber-300 text-amber-950; }
+.card-badge-emerald { @apply bg-emerald-300 text-emerald-950; }
+.card-badge-pink    { @apply bg-pink-300 text-pink-950; }
+.card-badge-sky     { @apply bg-sky-300 text-sky-950; }
+.card-badge-purple  { @apply bg-purple-300 text-purple-950; }
+.card-badge-indigo  { @apply bg-indigo-300 text-indigo-950; }
+
 .custom-scroll::-webkit-scrollbar {
   height: 6px;
   width: 6px;
