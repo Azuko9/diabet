@@ -1,201 +1,136 @@
-// State management for user selections
-let activeTab = 'p1';
-let selections = {};
+// Guided flow state: which meal is being composed, which category (row) is
+// currently shown, and the answers picked so far for that meal.
+let currentMealId = null;
+let currentRowIndex = 0;
+let answers = {};
 
-const pageRequiredRows = {
-  'p1': ['p1-1', 'p1-2', 'p1-3', 'p1-4', 'p1-5'],
-  'p2': ['p2-1', 'p2-2', 'p2-3', 'p2-4', 'p2-5'],
-  'p3': ['p3-1', 'p3-2', 'p3-3'],
-  'p4': ['p4-1', 'p4-2', 'p4-3', 'p4-4', 'p4-5']
-};
+const ALL_PAGES = ['page-intro', 'page-meal-select', 'page-category', 'page-summary'];
 
-const tabLabels = {
-  'p1': 'Petit-Déjeuner',
-  'p2': 'Déjeuner',
-  'p3': 'Goûter',
-  'p4': 'Dîner'
-};
-
-const tabBgClasses = {
-  'p1': 'bg-amber-600 text-white',
-  'p2': 'bg-emerald-600 text-white',
-  'p3': 'bg-pink-600 text-white',
-  'p4': 'bg-indigo-600 text-white'
-};
-
-// Switch between page tabs
-function switchTab(tabId) {
-  activeTab = tabId;
-
-  // Changing meal resets the "Mes Choix" bar
-  document.querySelectorAll('.food-card.selected').forEach(card => {
-    card.classList.remove('selected');
+function showPage(pageId) {
+  ALL_PAGES.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.toggle('hidden', id !== pageId);
   });
-  selections = {};
-
-  // Update button styling
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.className = 'tab-btn px-4 py-2.5 rounded-lg text-base sm:text-lg font-bold transition-all bg-slate-100 text-slate-800 hover:bg-slate-200 flex items-center gap-2';
-  });
-
-  const activeBtn = document.getElementById(`tab-${tabId}`);
-  if (activeBtn) {
-    activeBtn.className = `tab-btn px-4 py-2.5 rounded-lg text-base sm:text-lg font-bold transition-all ${tabBgClasses[tabId]} shadow-sm flex items-center gap-2`;
-  }
-
-  // Update active badge in selection bar
-  const badge = document.getElementById('active-page-badge');
-  if (badge) {
-    badge.textContent = tabLabels[tabId];
-  }
-
-  // Hide or show poster sections
-  const pages = ['p1', 'p2', 'p3', 'p4'];
-  pages.forEach(p => {
-    const el = document.getElementById(`page-${p}`);
-    if (!el) return;
-    if (tabId === p) {
-      el.classList.remove('hidden');
-    } else {
-      el.classList.add('hidden');
-    }
-  });
-
-  updateSelectionBar();
 }
 
-// Toggle card selection
-function selectFoodCard(cardElement) {
-  const row = cardElement.closest('tr');
-  if (!row) return;
-
-  const rowId = row.getAttribute('data-row');
-  const rowLabel = row.getAttribute('data-label') || 'Aliment';
-  const itemName = cardElement.getAttribute('data-name');
-  const itemIcon = cardElement.querySelector('div')?.textContent.trim() || '🍽️';
-
-  // Check if already selected
-  if (cardElement.classList.contains('selected')) {
-    cardElement.classList.remove('selected');
-    delete selections[rowId];
-  } else {
-    // Deselect sibling cards in the same row
-    row.querySelectorAll('.food-card').forEach(c => c.classList.remove('selected'));
-    cardElement.classList.add('selected');
-    selections[rowId] = {
-      rowId: rowId,
-      label: rowLabel,
-      name: itemName,
-      icon: itemIcon,
-      element: cardElement
-    };
-  }
-
-  updateSelectionBar();
+// Welcome screen -> meal choice
+function goToMealSelect() {
+  currentMealId = null;
+  currentRowIndex = 0;
+  answers = {};
+  showPage('page-meal-select');
 }
 
-// Update choices and completion status in top header bar
-function updateSelectionBar() {
-  const container = document.getElementById('selected-items-container');
-  const selectionBar = document.getElementById('selection-bar');
-  const statusBadge = document.getElementById('completion-status-badge');
-  const iconContainer = document.getElementById('complete-icon-container');
-  const barTitle = document.getElementById('selection-bar-title');
-  const resetBtn = document.getElementById('reset-selections-btn');
+// Meal choice -> first category of that meal
+function chooseMeal(mealId) {
+  currentMealId = mealId;
+  currentRowIndex = 0;
+  answers = {};
+  renderCategory();
+  showPage('page-category');
+}
 
-  if (!container || !selectionBar) return;
+// Render the current category's question and its 4 option cards
+function renderCategory() {
+  const meal = MEALS[currentMealId];
+  const row = meal.rows[currentRowIndex];
+  const answer = answers[row.id];
 
-  const requiredRows = pageRequiredRows[activeTab] || [];
-  const currentTabSelectedCount = requiredRows.filter(rowId => selections[rowId]).length;
-  const totalRequired = requiredRows.length;
-  const isComplete = totalRequired > 0 && currentTabSelectedCount === totalRequired;
+  const stepLabel = document.getElementById('category-step-label');
+  if (stepLabel) {
+    stepLabel.textContent = `${meal.emoji} ${meal.label} — Étape ${currentRowIndex + 1}/${meal.rows.length}`;
+  }
+  const title = document.getElementById('category-title');
+  if (title) title.textContent = row.label;
 
-  // Update Bar Background & Status
-  if (isComplete) {
-    selectionBar.className = "bg-emerald-950 text-emerald-100 border-2 border-emerald-500 rounded-xl px-3 sm:px-4 py-2.5 flex flex-col gap-2 shadow-lg transition-all duration-300";
-    if (barTitle) barTitle.className = "text-xs sm:text-sm font-black uppercase tracking-wider text-emerald-300";
-    if (statusBadge) {
-      statusBadge.className = "bg-emerald-800 text-emerald-100 text-xs sm:text-sm px-3 py-1 rounded-full font-black border border-emerald-500 shadow-sm";
-      statusBadge.textContent = `Complet (${currentTabSelectedCount}/${totalRequired})`;
-    }
-    if (iconContainer) {
-      iconContainer.innerHTML = `
-        <span class="bg-emerald-500 text-slate-950 font-black text-xs sm:text-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md animate-bounce">
-          <i data-lucide="arrow-up-circle" class="w-5 h-5 stroke-3"></i> Complet !
-        </span>
-      `;
-    }
-    if (resetBtn) {
-      resetBtn.className = "px-3 py-1.5 bg-emerald-800/70 hover:bg-emerald-700 text-emerald-100 text-xs sm:text-sm font-bold rounded-lg flex items-center gap-1.5 border border-emerald-500 transition-all shrink-0";
-    }
-  } else {
-    selectionBar.className = "bg-rose-950 text-rose-100 border-2 border-rose-600 rounded-xl px-3 sm:px-4 py-2.5 flex flex-col gap-2 shadow-lg transition-all duration-300";
-    if (barTitle) barTitle.className = "text-xs sm:text-sm font-black uppercase tracking-wider text-rose-300";
-    if (statusBadge) {
-      statusBadge.className = "bg-rose-900 text-rose-200 text-xs sm:text-sm px-3 py-1 rounded-full font-bold border border-rose-700";
-      statusBadge.textContent = `Incomplet (${currentTabSelectedCount}/${totalRequired})`;
-    }
-    if (iconContainer) {
-      iconContainer.innerHTML = `
-        <span class="bg-rose-900/80 text-rose-200 text-xs sm:text-sm px-3 py-1 rounded-full font-bold flex items-center gap-1.5 border border-rose-700">
-          <i data-lucide="alert-circle" class="w-4 h-4"></i> En cours
-        </span>
-      `;
-    }
-    if (resetBtn) {
-      resetBtn.className = "px-3 py-1.5 bg-rose-900/70 hover:bg-rose-800 text-rose-100 text-xs sm:text-sm font-bold rounded-lg flex items-center gap-1.5 border border-rose-700 transition-all shrink-0";
-    }
+  const grid = document.getElementById('category-options');
+  if (grid) {
+    grid.innerHTML = row.options.map((opt, i) => `
+      <div class="food-card food-card-${opt.color}${answer && answer.optionIndex === i ? ' selected' : ''}"
+           onclick="selectOption(${i})">
+        <div class="card-icon">${opt.icon}</div>
+        <div class="card-title">${opt.title}</div>
+        ${opt.badge
+          ? `<span class="card-badge card-badge-${opt.color}">${opt.badge}</span>`
+          : `<div class="card-note">${opt.note}</div>`}
+      </div>
+    `).join('');
   }
 
-  // Re-render items in container
-  const selectedKeys = Object.keys(selections);
-  if (selectedKeys.length === 0) {
-    container.innerHTML = `<span class="text-sm sm:text-base text-rose-200/80 italic font-semibold">Cliquez sur un aliment ci-dessous pour composer votre plateau...</span>`;
-  } else {
-    let html = '';
-    selectedKeys.forEach(key => {
-      const item = selections[key];
-      const isItemActiveInCurrentTab = requiredRows.includes(item.rowId);
-      const badgeBg = isItemActiveInCurrentTab ? "bg-emerald-900/90 text-emerald-100 border-emerald-400" : "bg-slate-800 text-slate-200 border-slate-600";
+  const nextBtn = document.getElementById('category-next-btn');
+  if (nextBtn) {
+    const isLast = currentRowIndex === meal.rows.length - 1;
+    nextBtn.innerHTML = isLast
+      ? 'Voir mon menu <i data-lucide="check" class="w-5 h-5"></i>'
+      : 'Suivant <i data-lucide="arrow-right" class="w-5 h-5"></i>';
+  }
 
-      html += `
-        <div class="${badgeBg} border-2 text-sm sm:text-base pl-2 pr-1 py-1 rounded-full flex items-center gap-1.5 shrink-0 shadow-sm" title="${item.label}: ${item.name}">
-          <span class="font-black">${item.label}:</span>
-          <span class="text-xl sm:text-2xl leading-none">${item.icon}</span>
-          <button onclick="removeItem('${item.rowId}')" class="ml-1 text-rose-300 hover:text-white font-black text-lg">&times;</button>
+  if (window.lucide) lucide.createIcons();
+}
+
+// Pick an option for the current category
+function selectOption(optionIndex) {
+  const meal = MEALS[currentMealId];
+  const row = meal.rows[currentRowIndex];
+  const opt = row.options[optionIndex];
+  answers[row.id] = { rowLabel: row.label, name: opt.name, icon: opt.icon, optionIndex };
+  renderCategory();
+}
+
+// Move to the next category, or to the summary if this was the last one
+function goNext() {
+  const meal = MEALS[currentMealId];
+  if (currentRowIndex < meal.rows.length - 1) {
+    currentRowIndex++;
+    renderCategory();
+  } else {
+    renderSummary();
+    showPage('page-summary');
+  }
+}
+
+// Move to the previous category, or back to meal choice if this was the first
+function goPrev() {
+  if (currentRowIndex === 0) {
+    goToMealSelect();
+  } else {
+    currentRowIndex--;
+    renderCategory();
+  }
+}
+
+// Render the final recap of everything picked for the current meal
+function renderSummary() {
+  const meal = MEALS[currentMealId];
+  const title = document.getElementById('summary-title');
+  if (title) title.textContent = `Votre ${meal.label}`;
+
+  const list = document.getElementById('summary-list');
+  if (list) {
+    list.innerHTML = meal.rows.map(row => {
+      const a = answers[row.id];
+      if (!a) return '';
+      return `
+        <div class="flex items-center gap-3 bg-slate-50 border-2 border-slate-200 rounded-xl px-4 py-2.5">
+          <span class="text-3xl">${a.icon}</span>
+          <div class="text-left">
+            <div class="text-xs font-black uppercase tracking-wide text-slate-500">${row.label}</div>
+            <div class="font-extrabold text-slate-900">${a.name}</div>
+          </div>
         </div>
       `;
-    });
-    container.innerHTML = html;
-  }
-
-  if (window.lucide) {
-    lucide.createIcons();
+    }).join('');
   }
 }
 
-// Remove single selection item from header bar
-function removeItem(rowId) {
-  if (selections[rowId] && selections[rowId].element) {
-    selections[rowId].element.classList.remove('selected');
-  }
-  delete selections[rowId];
-  updateSelectionBar();
+// Back to the very first welcome screen
+function restart() {
+  currentMealId = null;
+  currentRowIndex = 0;
+  answers = {};
+  showPage('page-intro');
 }
 
-// Clear all selections
-function resetSelections() {
-  document.querySelectorAll('.food-card.selected').forEach(card => {
-    card.classList.remove('selected');
-  });
-  selections = {};
-  updateSelectionBar();
-}
-
-// Initialize Lucide icons on load
 window.addEventListener('DOMContentLoaded', () => {
-  if (window.lucide) {
-    lucide.createIcons();
-  }
-  updateSelectionBar();
+  if (window.lucide) lucide.createIcons();
 });

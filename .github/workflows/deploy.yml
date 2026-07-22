@@ -35,10 +35,10 @@ jobs:
 
       - name: Assemble deploy folder
         run: |
-          mkdir -p _site/css _site/js
+          mkdir -p _site/css
           cp index.html _site/
           cp css/output.css _site/css/
-          cp js/app.js _site/js/
+          cp -r js _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

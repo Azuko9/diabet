@@ -1,0 +1,15 @@
+    <section id="page-category" class="meal-section border-teal-300 hidden">
+      <div class="flex flex-col items-center gap-1 pb-2 text-center">
+        <span class="wizard-step-label" id="category-step-label">Étape 1/5</span>
+        <h2 class="meal-heading" id="category-title">Boisson</h2>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="category-options"></div>
+      <div class="wizard-nav">
+        <button onclick="goPrev()" class="wizard-btn wizard-btn-prev">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i> Précédent
+        </button>
+        <button onclick="goNext()" id="category-next-btn" class="wizard-btn wizard-btn-next">
+          Suivant <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </section>

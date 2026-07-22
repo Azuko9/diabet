@@ -18,34 +18,35 @@
 </head>
 <body class="min-h-screen flex flex-col bg-slate-100 text-slate-900 antialiased overflow-x-hidden">
 
-  <!-- TOP HEADER WITH INTEGRATED SELECTION BAR -->
+  <!-- TOP HEADER -->
   <!-- INCLUDE:header.html -->
 
   <!-- MAIN CONTAINER -->
-  <main class="flex-1 max-w-[2200px] w-full mx-auto p-3 sm:p-5 flex flex-col gap-5">
+  <main class="flex-1 max-w-3xl w-full mx-auto p-3 sm:p-5 flex flex-col gap-5">
 
     <!-- ========================================== -->
-    <!-- PAGE 1 : PETIT-DÉJEUNER                    -->
+    <!-- ÉCRAN D'ACCUEIL                             -->
     <!-- ========================================== -->
-    <!-- INCLUDE:petit-dejeuner.html -->
+    <!-- INCLUDE:intro.html -->
 
     <!-- ========================================== -->
-    <!-- PAGE 2 : DÉJEUNER                          -->
+    <!-- CHOIX DU REPAS                              -->
     <!-- ========================================== -->
-    <!-- INCLUDE:dejeuner.html -->
+    <!-- INCLUDE:meal-select.html -->
 
     <!-- ========================================== -->
-    <!-- PAGE 3 : GOÛTER / COLLATION                -->
+    <!-- CATÉGORIE COURANTE (rendu dynamique par JS) -->
     <!-- ========================================== -->
-    <!-- INCLUDE:gouter.html -->
+    <!-- INCLUDE:category.html -->
 
     <!-- ========================================== -->
-    <!-- PAGE 4 : DÎNER                             -->
+    <!-- RÉCAPITULATIF FINAL                         -->
     <!-- ========================================== -->
-    <!-- INCLUDE:diner.html -->
+    <!-- INCLUDE:summary.html -->
 
   </main>
 
+  <script src="js/data.js" defer></script>
   <script src="js/app.js" defer></script>
 </body>
 </html>
