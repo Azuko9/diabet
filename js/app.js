@@ -69,6 +69,7 @@ function selectFoodCard(cardElement) {
   const rowId = row.getAttribute('data-row');
   const rowLabel = row.getAttribute('data-label') || 'Aliment';
   const itemName = cardElement.getAttribute('data-name');
+  const itemIcon = cardElement.querySelector('div')?.textContent.trim() || '🍽️';
 
   // Check if already selected
   if (cardElement.classList.contains('selected')) {
@@ -82,6 +83,7 @@ function selectFoodCard(cardElement) {
       rowId: rowId,
       label: rowLabel,
       name: itemName,
+      icon: itemIcon,
       element: cardElement
     };
   }
@@ -96,6 +98,7 @@ function updateSelectionBar() {
   const statusBadge = document.getElementById('completion-status-badge');
   const iconContainer = document.getElementById('complete-icon-container');
   const barTitle = document.getElementById('selection-bar-title');
+  const resetBtn = document.getElementById('reset-selections-btn');
 
   if (!container || !selectionBar) return;
 
@@ -106,7 +109,7 @@ function updateSelectionBar() {
 
   // Update Bar Background & Status
   if (isComplete) {
-    selectionBar.className = "bg-emerald-950 text-emerald-100 border-2 border-emerald-500 rounded-xl px-4 py-2.5 flex items-center gap-3 justify-between shadow-lg transition-all duration-300";
+    selectionBar.className = "bg-emerald-950 text-emerald-100 border-2 border-emerald-500 rounded-xl px-3 sm:px-4 py-2.5 flex flex-col gap-2 shadow-lg transition-all duration-300";
     if (barTitle) barTitle.className = "text-xs sm:text-sm font-black uppercase tracking-wider text-emerald-300";
     if (statusBadge) {
       statusBadge.className = "bg-emerald-800 text-emerald-100 text-xs sm:text-sm px-3 py-1 rounded-full font-black border border-emerald-500 shadow-sm";
@@ -115,12 +118,15 @@ function updateSelectionBar() {
     if (iconContainer) {
       iconContainer.innerHTML = `
         <span class="bg-emerald-500 text-slate-950 font-black text-xs sm:text-sm px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md animate-bounce">
-          <i data-lucide="arrow-up-circle" class="w-5 h-5 stroke-[3]"></i> Complet !
+          <i data-lucide="arrow-up-circle" class="w-5 h-5 stroke-3"></i> Complet !
         </span>
       `;
     }
+    if (resetBtn) {
+      resetBtn.className = "px-3 py-1.5 bg-emerald-800/70 hover:bg-emerald-700 text-emerald-100 text-xs sm:text-sm font-bold rounded-lg flex items-center gap-1.5 border border-emerald-500 transition-all shrink-0";
+    }
   } else {
-    selectionBar.className = "bg-rose-950 text-rose-100 border-2 border-rose-600 rounded-xl px-4 py-2.5 flex items-center gap-3 justify-between shadow-lg transition-all duration-300";
+    selectionBar.className = "bg-rose-950 text-rose-100 border-2 border-rose-600 rounded-xl px-3 sm:px-4 py-2.5 flex flex-col gap-2 shadow-lg transition-all duration-300";
     if (barTitle) barTitle.className = "text-xs sm:text-sm font-black uppercase tracking-wider text-rose-300";
     if (statusBadge) {
       statusBadge.className = "bg-rose-900 text-rose-200 text-xs sm:text-sm px-3 py-1 rounded-full font-bold border border-rose-700";
@@ -132,6 +138,9 @@ function updateSelectionBar() {
           <i data-lucide="alert-circle" class="w-4 h-4"></i> En cours
         </span>
       `;
+    }
+    if (resetBtn) {
+      resetBtn.className = "px-3 py-1.5 bg-rose-900/70 hover:bg-rose-800 text-rose-100 text-xs sm:text-sm font-bold rounded-lg flex items-center gap-1.5 border border-rose-700 transition-all shrink-0";
     }
   }
 
@@ -147,9 +156,9 @@ function updateSelectionBar() {
       const badgeBg = isItemActiveInCurrentTab ? "bg-emerald-900/90 text-emerald-100 border-emerald-400" : "bg-slate-800 text-slate-200 border-slate-600";
 
       html += `
-        <div class="${badgeBg} border-2 text-sm sm:text-base px-3 py-1 rounded-full flex items-center gap-1.5 shrink-0 shadow-sm">
+        <div class="${badgeBg} border-2 text-sm sm:text-base pl-2 pr-1 py-1 rounded-full flex items-center gap-1.5 shrink-0 shadow-sm" title="${item.label}: ${item.name}">
           <span class="font-black">${item.label}:</span>
-          <span class="font-bold">${item.name}</span>
+          <span class="text-xl sm:text-2xl leading-none">${item.icon}</span>
           <button onclick="removeItem('${item.rowId}')" class="ml-1 text-rose-300 hover:text-white font-black text-lg">&times;</button>
         </div>
       `;
