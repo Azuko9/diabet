@@ -73,7 +73,7 @@ function selectOption(optionIndex) {
   const meal = MEALS[currentMealId];
   const row = meal.rows[currentRowIndex];
   const opt = row.options[optionIndex];
-  answers[row.id] = { rowLabel: row.label, name: opt.name, icon: opt.icon, optionIndex };
+  answers[row.id] = { rowLabel: row.label, name: opt.name, icon: opt.icon, tip: opt.tip, optionIndex };
   renderCategory();
 }
 
@@ -173,6 +173,7 @@ function renderSummary() {
           <div class="text-left">
             <div class="text-xs font-black uppercase tracking-wide text-slate-500">${row.label}</div>
             <div class="font-extrabold text-slate-900">${a.name}</div>
+            ${a.tip ? `<div class="text-xs sm:text-sm text-slate-600 italic mt-0.5">💡 ${a.tip}</div>` : ''}
           </div>
         </div>
       `;
