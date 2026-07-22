@@ -6,24 +6,21 @@ const pageRequiredRows = {
   'p1': ['p1-1', 'p1-2', 'p1-3', 'p1-4', 'p1-5'],
   'p2': ['p2-1', 'p2-2', 'p2-3', 'p2-4', 'p2-5'],
   'p3': ['p3-1', 'p3-2', 'p3-3'],
-  'p4': ['p4-1', 'p4-2', 'p4-3', 'p4-4', 'p4-5'],
-  'all': ['p1-1', 'p1-2', 'p1-3', 'p1-4', 'p1-5', 'p2-1', 'p2-2', 'p2-3', 'p2-4', 'p2-5', 'p3-1', 'p3-2', 'p3-3', 'p4-1', 'p4-2', 'p4-3', 'p4-4', 'p4-5']
+  'p4': ['p4-1', 'p4-2', 'p4-3', 'p4-4', 'p4-5']
 };
 
 const tabLabels = {
   'p1': 'Petit-Déjeuner',
   'p2': 'Déjeuner',
   'p3': 'Goûter',
-  'p4': 'Dîner',
-  'all': 'Vue d\'ensemble'
+  'p4': 'Dîner'
 };
 
 const tabBgClasses = {
   'p1': 'bg-amber-600 text-white',
   'p2': 'bg-emerald-600 text-white',
   'p3': 'bg-pink-600 text-white',
-  'p4': 'bg-indigo-600 text-white',
-  'all': 'bg-indigo-900 text-white'
+  'p4': 'bg-indigo-600 text-white'
 };
 
 // Switch between page tabs
@@ -32,12 +29,12 @@ function switchTab(tabId) {
 
   // Update button styling
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.className = 'tab-btn px-3 py-1.5 rounded-md text-sm font-bold transition-all bg-slate-100 text-slate-700 hover:bg-slate-200 flex items-center gap-1.5';
+    btn.className = 'tab-btn px-4 py-2.5 rounded-lg text-base sm:text-lg font-bold transition-all bg-slate-100 text-slate-800 hover:bg-slate-200 flex items-center gap-2';
   });
 
   const activeBtn = document.getElementById(`tab-${tabId}`);
   if (activeBtn) {
-    activeBtn.className = `tab-btn px-3 py-1.5 rounded-md text-sm font-bold transition-all ${tabBgClasses[tabId]} shadow-xs flex items-center gap-1.5`;
+    activeBtn.className = `tab-btn px-4 py-2.5 rounded-lg text-base sm:text-lg font-bold transition-all ${tabBgClasses[tabId]} shadow-sm flex items-center gap-2`;
   }
 
   // Update active badge in selection bar
@@ -51,7 +48,7 @@ function switchTab(tabId) {
   pages.forEach(p => {
     const el = document.getElementById(`page-${p}`);
     if (!el) return;
-    if (tabId === 'all' || tabId === p) {
+    if (tabId === p) {
       el.classList.remove('hidden');
     } else {
       el.classList.add('hidden');
