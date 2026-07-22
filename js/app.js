@@ -77,8 +77,21 @@ function selectOption(optionIndex) {
   renderCategory();
 }
 
-// Move to the next category, or to the summary if this was the last one
+// Move to the next category, or to the summary if this was the last one.
+// Blocked by a confirmation modal if nothing was picked for the current category.
 function goNext() {
+  const meal = MEALS[currentMealId];
+  const row = meal.rows[currentRowIndex];
+
+  if (!answers[row.id]) {
+    showSkipModal(row);
+    return;
+  }
+
+  advanceToNextCategory();
+}
+
+function advanceToNextCategory() {
   const meal = MEALS[currentMealId];
   if (currentRowIndex < meal.rows.length - 1) {
     currentRowIndex++;
@@ -87,6 +100,25 @@ function goNext() {
     renderSummary();
     showPage('page-summary');
   }
+}
+
+// "You haven't made a choice" confirmation modal
+function showSkipModal(row) {
+  const message = document.getElementById('skip-modal-message');
+  if (message) message.textContent = row.warning;
+  const modal = document.getElementById('skip-modal');
+  if (modal) modal.classList.add('open');
+}
+
+function closeSkipModal() {
+  const modal = document.getElementById('skip-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+// "Passer ce choix" — acknowledge the warning and move on without picking
+function confirmSkip() {
+  closeSkipModal();
+  advanceToNextCategory();
 }
 
 // Move to the previous category, or back to meal choice if this was the first

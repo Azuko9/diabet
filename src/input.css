@@ -70,6 +70,26 @@ h1, h2, h3, h4, .font-title {
     @apply bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm;
   }
 
+  /* "No selection" confirmation modal shown when clicking Suivant without picking */
+  .modal-overlay {
+    @apply hidden fixed inset-0 z-50 items-center justify-center p-4 bg-slate-900/50;
+  }
+  .modal-overlay.open {
+    @apply flex;
+  }
+  .modal-card {
+    @apply bg-white rounded-2xl shadow-xl p-5 sm:p-6 max-w-md w-full flex flex-col gap-4;
+  }
+  .modal-btn {
+    @apply flex-1 px-4 py-2.5 rounded-lg font-bold text-sm sm:text-base transition-all flex items-center justify-center gap-2 text-center;
+  }
+  .modal-btn-secondary {
+    @apply bg-slate-100 text-slate-800 hover:bg-slate-200;
+  }
+  .modal-btn-primary {
+    @apply bg-slate-900 hover:bg-black text-white shadow-sm;
+  }
+
   .card-icon {
     @apply text-3xl sm:text-4xl mb-1;
   }

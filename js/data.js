@@ -10,7 +10,7 @@ const MEALS = {
     label: 'Petit-Déjeuner',
     emoji: '🍳',
     rows: [
-      { id: 'p1-1', label: 'Boisson', options: [
+      { id: 'p1-1', label: 'Boisson', warning: "Bien s'hydrater dès le matin aide à démarrer la journée en douceur.", options: [
         { color: 'amber',   icon: '☕',   title: 'Café noir / Allongé', name: 'Café noir / Allongé', note: 'Sans sucre' },
         { color: 'emerald', icon: '🍵',   title: 'Thé vert ou noir', name: 'Thé vert ou noir', note: 'Sans sucre' },
         { color: 'pink',    icon: '🫖',   title: 'Thé / Tisane', name: 'Thé / Tisane citron menthe', note: 'Citron & Menthe' },
@@ -20,7 +20,7 @@ const MEALS = {
         { color: 'lime',    icon: '🍵',   title: 'Thé noir nature', name: 'Thé noir nature', note: 'Sans sucre' },
         { color: 'rose',    icon: '🥛',   title: 'Lait chaud nature', name: 'Lait chaud nature', note: 'Demi-écrémé' },
       ]},
-      { id: 'p1-2', label: 'Féculent', options: [
+      { id: 'p1-2', label: 'Féculent', warning: 'Le féculent du petit-déjeuner apporte une énergie essentielle et évite les fringales avant midi.', options: [
         { color: 'amber',   icon: '🍞', title: 'Pain complet / Seigle', name: 'Pain complet (50-60g)', badge: '50-60g (2-3 tr.)' },
         { color: 'emerald', icon: '🥣', title: "Flocons d'avoine", name: "Flocons d'avoine (30-40g)", badge: '30-40g (3-4 c.à.s)' },
         { color: 'pink',    icon: '🥞', title: '2 Pancakes maison', name: '2 Pancakes maison', badge: 'Farine complète' },
@@ -30,7 +30,7 @@ const MEALS = {
         { color: 'lime',    icon: '🥣', title: 'Muesli complet', name: 'Muesli complet (30g)', badge: '30g (3 c.à.s)' },
         { color: 'rose',    icon: '🍘', title: 'Galettes de riz complet', name: 'Galettes de riz complet', badge: '3-4 galettes' },
       ]},
-      { id: 'p1-3', label: 'Tartine', options: [
+      { id: 'p1-3', label: 'Tartine', warning: "Un peu de matière grasse ou de protéines ralentit l'absorption des sucres du petit-déjeuner.", options: [
         { color: 'amber',   icon: '🧈', title: 'Beurre', name: 'Beurre doux/demi-sel (10g)', note: '10g (1 noisette)' },
         { color: 'emerald', icon: '🥜', title: 'Beurre de cacahuète', name: "Purée d'amande / cacahuète", note: '1 c.à.café (100% pur)' },
         { color: 'pink',    icon: '🍯', title: 'Miel ou Confiture', name: 'Miel ou Confiture (1 c.à.c)', note: '1 c.à.café rase max' },
@@ -40,7 +40,7 @@ const MEALS = {
         { color: 'lime',    icon: '🌰', title: 'Purée de sésame (tahin)', name: 'Purée de sésame (tahin)', note: '1 c.à.café' },
         { color: 'rose',    icon: '🥛', title: 'Ricotta allégée', name: 'Ricotta allégée', note: 'Légère' },
       ]},
-      { id: 'p1-4', label: 'Protéines', options: [
+      { id: 'p1-4', label: 'Protéines', warning: "Il est essentiel d'avoir un apport en protéines pour la satiété et l'équilibre glycémique.", options: [
         { color: 'amber',   icon: '🥛', title: 'Yaourt nature', name: 'Yaourt nature / Fromage blanc', note: 'Ou Fromage blanc 2%' },
         { color: 'emerald', icon: '🥛', title: 'Lait demi-écrémé', name: 'Lait demi-écrémé (150ml)', note: '150ml (chaud/froid)' },
         { color: 'pink',    icon: '🥣', title: 'Skyr / Petit suisse', name: 'Skyr ou Petit suisse', note: 'Riche en protéines' },
@@ -50,7 +50,7 @@ const MEALS = {
         { color: 'lime',    icon: '🥛', title: 'Kéfir nature', name: 'Kéfir nature', note: 'Probiotique naturel' },
         { color: 'rose',    icon: '🧀', title: 'Cottage cheese', name: 'Cottage cheese', note: 'Riche en protéines' },
       ]},
-      { id: 'p1-5', label: 'Fruit frais', options: [
+      { id: 'p1-5', label: 'Fruit frais', warning: 'Le fruit apporte des fibres et des vitamines essentielles à votre équilibre.', options: [
         { color: 'amber',   icon: '🍎', title: '1 Pomme moyenne', name: '1 Pomme avec la peau', note: 'Conserver la peau' },
         { color: 'emerald', icon: '🫐', title: 'Myrtilles / Fraises', name: 'Myrtilles / Fraises (100g)', note: '1 poignée (100g)' },
         { color: 'pink',    icon: '🥝', title: '1 Kiwi frais', name: '1 Kiwi frais', note: 'Riche en vitamine C' },
@@ -66,7 +66,7 @@ const MEALS = {
     label: 'Déjeuner',
     emoji: '🍽️',
     rows: [
-      { id: 'p2-1', label: 'Crudités', options: [
+      { id: 'p2-1', label: 'Crudités', warning: "Les légumes crus apportent des fibres qui ralentissent l'absorption des glucides du repas.", options: [
         { color: 'amber',   icon: '🍅', title: 'Tomates en salade', name: "Tomates fraîches + Huile d'olive", note: "1 c.à.c huile d'olive" },
         { color: 'sky',     icon: '🥕', title: 'Carottes râpées', name: 'Carottes râpées citron & colza', note: 'Citron & Huile colza' },
         { color: 'emerald', icon: '🥒', title: 'Concombre tzatziki', name: 'Concombre au yaourt & aneth', note: 'Yaourt, aneth, menthe' },
@@ -76,7 +76,7 @@ const MEALS = {
         { color: 'lime',    icon: '🥬', title: 'Radis croquants', name: 'Radis croquants', note: 'Croquants nature' },
         { color: 'rose',    icon: '🥗', title: 'Céleri rémoulade allégée', name: 'Céleri rémoulade allégée', note: 'Mayonnaise allégée' },
       ]},
-      { id: 'p2-2', label: 'Protéine', options: [
+      { id: 'p2-2', label: 'Protéine', warning: "Il est essentiel d'avoir un apport en protéines à chaque repas.", options: [
         { color: 'amber',   icon: '🍗', title: 'Escalope de poulet', name: 'Escalope de poulet grillée (100g)', badge: '100-120g grillé' },
         { color: 'sky',     icon: '🐟', title: 'Pavé de saumon', name: 'Pavé de saumon au four (110g)', badge: '110g papillote' },
         { color: 'emerald', icon: '🍳', title: '2 Œufs au plat', name: '2 Œufs au plat / poêlés', badge: 'Cuits peu de gras' },
@@ -86,7 +86,7 @@ const MEALS = {
         { color: 'lime',    icon: '🦐', title: 'Crevettes décortiquées', name: 'Crevettes décortiquées (100g)', badge: '100g cuites' },
         { color: 'rose',    icon: '🍖', title: 'Jambon blanc dégraissé', name: 'Jambon blanc dégraissé (2 tranches)', badge: '2 tranches' },
       ]},
-      { id: 'p2-3', label: 'Féculent', options: [
+      { id: 'p2-3', label: 'Féculent', warning: "Le féculent est indispensable pour l'énergie et la satiété du déjeuner.", options: [
         { color: 'amber',   icon: '🍝', title: 'Pâtes complètes', name: 'Pâtes complètes (100-120g)', badge: '100-120g cuites' },
         { color: 'sky',     icon: '🍚', title: 'Riz basmati / complet', name: 'Riz basmati / complet (100g)', badge: '100g (3 c.à.s)' },
         { color: 'emerald', icon: '🫘', title: 'Lentilles vertes', name: 'Lentilles vertes (120g)', badge: '120g (4 c.à.s)' },
@@ -96,7 +96,7 @@ const MEALS = {
         { color: 'lime',    icon: '🫛', title: 'Petits pois', name: 'Petits pois (150g)', badge: '150g (8 c.à.s)' },
         { color: 'rose',    icon: '🍕', title: 'Part de Pizza ou Quiche', name: 'Part de Pizza ou Quiche (100g)', badge: '100g' },
       ]},
-      { id: 'p2-4', label: 'Légumes cuits', options: [
+      { id: 'p2-4', label: 'Légumes cuits', warning: "Les légumes à volonté aident à réguler l'appétit et la glycémie.", options: [
         { color: 'amber',   icon: '🥦', title: 'Brocolis vapeur', name: "Brocolis vapeur + Huile d'olive", note: "Filet d'huile d'olive" },
         { color: 'sky',     icon: '🫛', title: 'Haricots verts', name: 'Haricots verts persillade', note: 'Persil & Ail' },
         { color: 'emerald', icon: '🍆', title: 'Ratatouille maison', name: 'Ratatouille maison', note: 'Courgettes & Poivrons' },
@@ -106,7 +106,7 @@ const MEALS = {
         { color: 'lime',    icon: '🥒', title: 'Courgettes sautées', name: 'Courgettes sautées', note: "Filet d'huile d'olive" },
         { color: 'rose',    icon: '🥦', title: 'Chou-fleur gratiné léger', name: 'Chou-fleur gratiné léger', note: 'Béchamel légère' },
       ]},
-      { id: 'p2-5', label: 'Dessert', options: [
+      { id: 'p2-5', label: 'Dessert', warning: "Le produit laitier ou le fruit en fin de repas complète l'équilibre glycémique du déjeuner.", options: [
         { color: 'amber',   icon: '🧀', title: 'Portion Fromage', name: 'Fromage (30g) + pain', note: '30g + 1 bout de pain' },
         { color: 'sky',     icon: '🍍', title: 'Ananas frais', name: '2 Tranches ananas frais', note: '2 tranches fines' },
         { color: 'emerald', icon: '🥣', title: 'Fromage blanc 2%', name: 'Fromage blanc 2% sans sucre', note: '100g sans sucre' },
@@ -122,7 +122,7 @@ const MEALS = {
     label: 'Goûter',
     emoji: '🍎',
     rows: [
-      { id: 'p3-1', label: 'Boisson', options: [
+      { id: 'p3-1', label: 'Boisson', warning: "Pensez à vous hydrater, même sans avoir soif.", options: [
         { color: 'amber',   icon: '🍵', title: 'Thé vert ou Tisane', name: 'Thé vert ou Tisane', note: 'Sans sucre ajouté' },
         { color: 'pink',    icon: '🍋', title: 'Eau citronnée', name: 'Eau au citron pressé', note: '250ml rafraîchissant' },
         { color: 'emerald', icon: '☕', title: 'Décaféiné', name: 'Café décaféiné', note: 'Sans sucre' },
@@ -132,7 +132,7 @@ const MEALS = {
         { color: 'lime',    icon: '💧', title: 'Eau plate', name: 'Eau plate', note: '250ml' },
         { color: 'rose',    icon: '🍵', title: 'Thé noir nature', name: 'Thé noir nature', note: 'Sans sucre' },
       ]},
-      { id: 'p3-2', label: 'Fruit / Base', options: [
+      { id: 'p3-2', label: 'Fruit / Base', warning: 'Ne consommez jamais un fruit seul : associez-le à une protéine ou un féculent.', options: [
         { color: 'amber',   icon: '🍎', title: '1 Pomme ou Poire', name: '1 Pomme ou 1 Poire', note: 'Fraîche & croquante' },
         { color: 'pink',    icon: '🍓', title: 'Fruits rouges', name: 'Fruits rouges (1 poignée)', note: '1 poignée (100g)' },
         { color: 'emerald', icon: '🍞', title: 'Pain complet', name: '1 Tranche pain complet (30g)', note: '1 tranche (30g)' },
@@ -142,7 +142,7 @@ const MEALS = {
         { color: 'lime',    icon: '🍊', title: '2 Clémentines', name: '2 Clémentines', note: 'Faciles à emporter' },
         { color: 'rose',    icon: '🍑', title: '1 Pêche ou Nectarine', name: '1 Pêche ou Nectarine', note: 'Fruit de saison' },
       ]},
-      { id: 'p3-3', label: 'Modérateur', options: [
+      { id: 'p3-3', label: 'Modérateur', warning: 'Les bonnes graisses et protéines lissent la glycémie et évitent le coup de barre.', options: [
         { color: 'amber',   icon: '🥜', title: 'Amandes ou Noix', name: 'Amandes / Noix non salées (15g)', badge: '15-20g (1 poignée)' },
         { color: 'pink',    icon: '🥣', title: 'Yaourt grec nature', name: 'Yaourt grec nature (1 pot)', badge: '1 pot (125g)' },
         { color: 'emerald', icon: '🧀', title: 'Portion de Comté', name: 'Comté / Cantal (30g)', badge: '30g de fromage' },
@@ -158,7 +158,7 @@ const MEALS = {
     label: 'Dîner',
     emoji: '🌙',
     rows: [
-      { id: 'p4-1', label: 'Légumes', options: [
+      { id: 'p4-1', label: 'Légumes', warning: 'Les légumes à volonté favorisent un dîner léger et rassasiant.', options: [
         { color: 'amber',   icon: '🥣', title: 'Soupe maison', name: 'Soupe poireaux/courgettes', note: 'Poireaux & courgettes (1 bol)' },
         { color: 'sky',     icon: '🫑', title: 'Poivrons poêlés', name: 'Poivrons & courgettes poêlés', note: "Sautés à l'huile d'olive" },
         { color: 'emerald', icon: '🥗', title: 'Salade fraîcheur', name: 'Salade composée (verte, radis)', note: 'Salade verte, radis, concombre' },
@@ -168,7 +168,7 @@ const MEALS = {
         { color: 'lime',    icon: '🥒', title: 'Courgettes vapeur', name: 'Courgettes vapeur', note: "Nature ou filet d'huile" },
         { color: 'rose',    icon: '🥒', title: 'Concombre en salade', name: 'Concombre en salade', note: 'Yaourt & aneth' },
       ]},
-      { id: 'p4-2', label: 'Protéines', options: [
+      { id: 'p4-2', label: 'Protéines', warning: "Une portion de protéines reste nécessaire, même le soir.", options: [
         { color: 'amber',   icon: '🍳', title: 'Omelette herbes', name: 'Omelette herbes (2 œufs)', badge: '2 œufs bio' },
         { color: 'sky',     icon: '🐟', title: 'Dos de cabillaud', name: 'Dos de cabillaud / colin (120g)', badge: '120g vapeur' },
         { color: 'emerald', icon: '🦪', title: 'Thon / Crevettes', name: 'Thon au naturel (80g) / Crevettes', badge: '80g égoutté' },
@@ -178,7 +178,7 @@ const MEALS = {
         { color: 'lime',    icon: '🧆', title: 'Tofu nature', name: 'Tofu nature (100g)', badge: '100g' },
         { color: 'rose',    icon: '🥚', title: '1 Œuf dur', name: '1 Œuf dur', badge: '1 œuf' },
       ]},
-      { id: 'p4-3', label: 'Féculent', options: [
+      { id: 'p4-3', label: 'Féculent', warning: 'Un féculent modéré le soir aide à réguler la glycémie au réveil.', options: [
         { color: 'amber',   icon: '🍞', title: 'Pain complet', name: 'Pain complet (30-40g)', badge: '30-40g (1 tranche)' },
         { color: 'sky',     icon: '🌾', title: 'Quinoa / Boulgour', name: 'Quinoa / Boulgour cuit (80-100g)', badge: '80-100g (2-3 c.à.s)' },
         { color: 'emerald', icon: '🌽', title: 'Maïs / Pois chiches', name: 'Maïs ou Pois chiches (3 c.à.s)', badge: '3 c.à.soupe' },
@@ -188,7 +188,7 @@ const MEALS = {
         { color: 'lime',    icon: '🫛', title: 'Petits pois', name: 'Petits pois (100g)', badge: '100g' },
         { color: 'rose',    icon: '🍘', title: 'Biscottes', name: 'Biscottes', badge: '2-3 biscottes' },
       ]},
-      { id: 'p4-4', label: 'Laitage', options: [
+      { id: 'p4-4', label: 'Laitage', warning: 'Le laitage complète les apports en calcium et en protéines du dîner.', options: [
         { color: 'amber',   icon: '🥛', title: 'Yaourt nature', name: 'Yaourt nature (1 pot)', note: 'Sans sucre ajouté' },
         { color: 'sky',     icon: '🥣', title: 'Faisselle 0-3%', name: 'Faisselle ciboulette (1 pot)', note: 'Pincée de ciboulette' },
         { color: 'emerald', icon: '🧀', title: 'Feta émiettée', name: 'Feta émiettée (20-30g)', note: '20-30g dans la salade' },
@@ -198,7 +198,7 @@ const MEALS = {
         { color: 'lime',    icon: '🥣', title: 'Fromage blanc 0%', name: 'Fromage blanc 0%', note: 'Sans sucre ajouté' },
         { color: 'rose',    icon: '🧀', title: 'Mozzarella light', name: 'Mozzarella light (20g)', note: '20g' },
       ]},
-      { id: 'p4-5', label: 'Fruit / Douceur', options: [
+      { id: 'p4-5', label: 'Fruit / Douceur', warning: 'Terminez la journée par un fruit ou une compote sans sucre ajouté.', options: [
         { color: 'amber',   icon: '🍏', title: 'Compote maison', name: 'Compote maison sans sucre', note: 'Sans sucre ajouté' },
         { color: 'sky',     icon: '🍑', title: '1 Pêche / Nectarine', name: '1 Pêche ou Nectarine', note: 'Fruit frais de saison' },
         { color: 'emerald', icon: '🍊', title: '1 Orange fraîche', name: '1 Orange en quartiers', note: 'En quartiers' },
