@@ -1,9 +1,9 @@
     <section id="page-summary" class="meal-section border-emerald-300 hidden">
       <div class="flex flex-col items-center gap-2 pb-4 text-center">
-        <div class="text-5xl">✅</div>
+        <div class="text-5xl" id="summary-icon">✅</div>
         <h2 class="meal-heading" id="summary-title">Votre menu</h2>
-        <p class="meal-subtitle">Voici le récapitulatif de vos choix</p>
       </div>
+      <div class="max-w-xl mx-auto w-full mb-4" id="summary-status"></div>
       <div class="flex flex-col gap-2 max-w-xl mx-auto w-full" id="summary-list"></div>
       <div class="wizard-nav">
         <button onclick="goToMealSelect()" class="wizard-btn wizard-btn-prev">

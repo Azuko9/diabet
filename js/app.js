@@ -137,6 +137,31 @@ function renderSummary() {
   const title = document.getElementById('summary-title');
   if (title) title.textContent = `Votre ${meal.label}`;
 
+  const missingRows = meal.rows.filter(row => !answers[row.id]);
+
+  const icon = document.getElementById('summary-icon');
+  if (icon) icon.textContent = missingRows.length === 0 ? '🎉' : '⚠️';
+
+  const status = document.getElementById('summary-status');
+  if (status) {
+    if (missingRows.length === 0) {
+      status.innerHTML = `
+        <div class="summary-banner summary-banner-ok">
+          Bravo, vous avez composé un bon ${meal.label} !
+        </div>
+      `;
+    } else {
+      status.innerHTML = `
+        <div class="summary-banner summary-banner-warning">
+          <p>Attention, il vous manque un choix pour :</p>
+          <ul class="list-disc list-inside mt-1">
+            ${missingRows.map(row => `<li>${row.label}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+  }
+
   const list = document.getElementById('summary-list');
   if (list) {
     list.innerHTML = meal.rows.map(row => {

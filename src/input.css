@@ -90,6 +90,17 @@ h1, h2, h3, h4, .font-title {
     @apply bg-slate-900 hover:bg-black text-white shadow-sm;
   }
 
+  /* Completion status banner on the summary screen */
+  .summary-banner {
+    @apply rounded-xl px-4 py-3 text-sm sm:text-base font-bold border-2;
+  }
+  .summary-banner-ok {
+    @apply bg-emerald-50 border-emerald-300 text-emerald-900 text-center;
+  }
+  .summary-banner-warning {
+    @apply bg-rose-50 border-rose-300 text-rose-900 text-left;
+  }
+
   .card-icon {
     @apply text-3xl sm:text-4xl mb-1;
   }
