@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "description": "Guide repas diététique interactif - Centre Hospitalier de Pau",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./css/output.css --minify",
-    "watch": "tailwindcss -i ./src/input.css -o ./css/output.css --watch"
+    "build:html": "node scripts/build-html.js",
+    "build:css": "tailwindcss -i ./src/input.css -o ./css/output.css --minify",
+    "build": "npm run build:html && npm run build:css",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./css/output.css --watch"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.0",
